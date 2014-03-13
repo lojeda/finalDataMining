@@ -10,14 +10,21 @@ public class DataMiningFinal {
     public static void main(String[] args){
 
         //Getting Data in an uni-dimensional Array
+        getUnidimensionalArray("keywords-dataset-1.txt");
 
-       ArrayList<String> info;
 
-        try{
+        //Getting Data in a bi-dimensional Array
+        getMultiDimensionalArray("keywords-dataset-1.txt");
+
+    }
+
+    public static void getUnidimensionalArray(String fileName){
+
+        ArrayList<String> info;
 
             FileReaderUni data;
 
-            data = new FileReaderUni("keywords-dataset-1.txt");
+            data = new FileReaderUni(fileName);
 
             info = data.getData();
 
@@ -26,26 +33,30 @@ public class DataMiningFinal {
                 System.out.println(info.get(i));
             }
 
-        }
-        catch(Exception e){
+        // This is when we want to get the real value of Info and not Print it as it is right now
+        // Keep in mind to change the void for the method
 
+        //return info;
+    }
 
-        }
-
-        //Getting Data in a bi-dimensional Array
+    public static void getMultiDimensionalArray(String fileName){
 
         ArrayList<ArrayList<String>> lines = new ArrayList<ArrayList<String>>();
 
-            FileReaderMulti dataMulti;
+        FileReaderMulti dataMulti;
 
-            dataMulti = new FileReaderMulti("keywords-dataset-1.txt");
+        dataMulti = new FileReaderMulti(fileName);
 
-            lines = dataMulti.getDataMulti();
+        lines = dataMulti.getDataMulti();
 
-            for(int i=0; i<lines.size(); i++){
+        for(int i=0; i<lines.size(); i++){
 
-                System.out.println(lines.get(i));
-            }
+            System.out.println(lines.get(i));
+        }
 
+        // This is when we want to get the real value of Info and not Print it as it is right now
+        // Keep in mind to change the void for the method
+
+        //return lines;
     }
 }
