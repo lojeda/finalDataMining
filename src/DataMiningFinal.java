@@ -3,22 +3,30 @@
  */
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 
 public class DataMiningFinal {
 
     public static void main(String[] args){
 
-        //Getting Data in an uni-dimensional Array
-        getUnidimensionalArray("keywords-dataset-1.txt");
 
+        ArrayList<ArrayList<String>> value = new ArrayList<ArrayList<String>>();
+        Double similar;
 
-        //Getting Data in a bi-dimensional Array
-        getMultiDimensionalArray("keywords-dataset-1.txt");
+        for(int i=1; i<=2; i++){
 
+           value.add(kmeans("keywords-dataset-" + i + ".txt"));
+
+        }
+
+        similar = similarity(value.get(0),value.get(1));
+
+        System.out.println("The Similarity Between A and B : " + similar);
     }
 
-    public static void getUnidimensionalArray(String fileName){
+    public static ArrayList<String> getUnidimensionalArray(String fileName){
 
         ArrayList<String> info;
 
@@ -28,35 +36,119 @@ public class DataMiningFinal {
 
             info = data.getData();
 
-            for(int i=0; i<info.size(); i++){
-
-                System.out.println(info.get(i));
-            }
-
-        // This is when we want to get the real value of Info and not Print it as it is right now
-        // Keep in mind to change the void for the method
-
-        //return info;
+        return info;
     }
 
-    public static void getMultiDimensionalArray(String fileName){
+    public static ArrayList<ArrayList<String>> getMultiDimensionalArray(String fileName){
 
         ArrayList<ArrayList<String>> lines = new ArrayList<ArrayList<String>>();
 
-        FileReaderMulti dataMulti;
+            FileReaderMulti dataMulti;
 
-        dataMulti = new FileReaderMulti(fileName);
+            dataMulti = new FileReaderMulti(fileName);
 
-        lines = dataMulti.getDataMulti();
+            lines = dataMulti.getDataMulti();
 
-        for(int i=0; i<lines.size(); i++){
+        return lines;
+    }
 
-            System.out.println(lines.get(i));
+    public static ArrayList<String> kmeans(String filename){
+
+        ArrayList<String> dataUni;
+        ArrayList<String>  answerKw = new ArrayList<String>();
+        ArrayList<ArrayList<String>> lines;
+        int k =3;
+
+
+            dataUni = getUnidimensionalArray(filename);
+
+            answerKw = getkwords(k,dataUni);
+
+        return answerKw;
+
+    }
+
+    public static Double similarity(ArrayList<String> answerOne, ArrayList<String> answerTwo){
+
+        ArrayList<String> unionAns;
+        ArrayList<String> intersectionAns;
+        Double similarity;
+
+
+            answerOne = uniqueList(answerOne);
+            answerTwo = uniqueList(answerTwo);
+
+            unionAns = union(answerOne,answerTwo);
+            intersectionAns = intersection(answerOne,answerTwo);
+
+            unionAns = uniqueList(unionAns);
+
+        System.out.println("The Intersection A and  B : " + intersectionAns.size());
+        System.out.println("The Union between A U B: " + unionAns.size());
+
+
+        similarity = (double)intersectionAns.size()/ (double)unionAns.size();
+
+        return similarity;
+    }
+
+     public static ArrayList<String> uniqueList( ArrayList<String> dataValues){
+
+         HashSet hsOne = new HashSet();
+
+            hsOne.addAll(dataValues);
+            dataValues.clear();
+            dataValues.addAll(hsOne);
+
+         return dataValues;
+     }
+
+     public static ArrayList<String> getkwords(int k, ArrayList<String> dataUni){
+
+         String newWord = "";
+         ArrayList<String>  answer = new ArrayList<String>();
+         int j =0;
+
+         for(int i=0; i<dataUni.size(); i++){
+
+            if(j < k){
+
+                newWord = newWord+ " "+ dataUni.get(i);
+                j++;
+
+            }else{
+
+                answer.add(newWord.trim());
+                i = i - j;
+                j =0;
+                newWord = "";
+
+            }
+
         }
 
-        // This is when we want to get the real value of Info and not Print it as it is right now
-        // Keep in mind to change the void for the method
+         return answer;
+    }
 
-        //return lines;
+
+    public  static <T> ArrayList<T> union(ArrayList<T> list1, ArrayList<T> list2) {
+        Set<T> set = new HashSet<T>();
+
+        set.addAll(list1);
+        set.addAll(list2);
+
+        return new ArrayList<T>(set);
+    }
+
+    public static <T> ArrayList<T> intersection(ArrayList<T> list1, ArrayList<T> list2) {
+        ArrayList<T> list = new ArrayList<T>();
+
+        for (T t : list1) {
+            if(list2.contains(t)) {
+                list.add(t);
+            }
+        }
+
+        return list;
     }
 }

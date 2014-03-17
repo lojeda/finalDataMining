@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ee3204a2-7052-489b-9700-3bbcfe94f4a3" name="Default" comment="" />
+    <list default="true" id="ee3204a2-7052-489b-9700-3bbcfe94f4a3" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DataMiningFinal.java" afterPath="$PROJECT_DIR$/src/DataMiningFinal.java" />
+    </list>
     <ignored path="DataMining-Final.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -64,23 +66,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DataMiningFinal.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/DataMiningFinal.java">
+      <file leaf-file-name="FileReaderUni.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/FileReaderUni.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="13" selection-start="700" selection-end="700" vertical-scroll-proportion="0.32467532" vertical-offset="270" max-vertical-offset="1020">
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-                <element signature="e#1014#1033#0" expanded="true" />
-              </folding>
+            <state line="19" column="50" selection-start="493" selection-end="493" vertical-scroll-proportion="0.0" vertical-offset="42" max-vertical-offset="735">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FileReaderUni.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/FileReaderUni.java">
+      <file leaf-file-name="DataMiningFinal.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/DataMiningFinal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="50" selection-start="493" selection-end="493" vertical-scroll-proportion="0.0" vertical-offset="279" max-vertical-offset="735">
-              <folding />
+            <state line="13" column="0" selection-start="195" selection-end="195" vertical-scroll-proportion="0.23809524" vertical-offset="0" max-vertical-offset="2370">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -234,6 +235,11 @@
     <property name="last_opened_file_path" value="$USER_HOME$/Sites" />
     <property name="recentsLimit" value="5" />
     <property name="dynamic.classpath" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.DataMiningFinal">
     <configuration default="false" name="DataMiningFinal" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -457,16 +463,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/DataMiningFinal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="5" selection-start="373" selection-end="373" vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="1020">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#1014#1033#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/FileReaderUni.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="50" selection-start="493" selection-end="493" vertical-scroll-proportion="0.0" vertical-offset="279" max-vertical-offset="735">
@@ -539,10 +535,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DataMiningFinal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="13" selection-start="700" selection-end="700" vertical-scroll-proportion="0.32467532" vertical-offset="270" max-vertical-offset="1020">
+        <state line="13" column="0" selection-start="195" selection-end="195" vertical-scroll-proportion="0.23809524" vertical-offset="0" max-vertical-offset="2370">
           <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#1014#1033#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
