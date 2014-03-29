@@ -12,7 +12,7 @@ public class FileReaderUni {
 
         try{
 
-            Scanner fileReader = new Scanner( new File("data/" + filename));
+            Scanner fileReader = new Scanner( new File(filename));
 
             while(fileReader.hasNextLine() == true){
 
@@ -26,9 +26,7 @@ public class FileReaderUni {
 
             }
 
-
             fileReader.close();
-
         }
 
         catch(Exception e){

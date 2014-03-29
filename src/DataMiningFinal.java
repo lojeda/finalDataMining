@@ -7,23 +7,58 @@ import java.util.HashSet;
 import java.util.Set;
 
 
+
 public class DataMiningFinal {
 
     public static void main(String[] args){
 
-
         ArrayList<ArrayList<String>> value = new ArrayList<ArrayList<String>>();
-        Double similar;
 
-        for(int i=1; i<=2; i++){
+       // Double similar;
 
-           value.add(kmeans("keywords-dataset-" + i + ".txt"));
+        String [] files = {"/../Webscope_A1/ydata-ysm-advertiser-bids-v1_0.txt","data/keywords-dataset-2.txt"};
+       // String [] files = {"/../Webscope_A1/ydata-ysm-advertiser-bids-v1_0.txt","data/keywords-dataset-2.txt","data/webpages-dataset-1.txt","data/webpages-dataset-2.txt"};
+        Double[] j_similar = new Double[6];
+        Double[] a_similar = new Double[6];
+        Double a_similarX;
+        Double j_similarX;
+        int k =0;
 
-        }
 
-        similar = similarity(value.get(0),value.get(1));
+            for(int j=0; j<files.length; j++){
 
-        System.out.println("The Similarity Between A and B : " + similar);
+                value.add(kmeans(files[j]));
+
+            }
+
+
+            for(int j =0; j<files.length; j++){
+
+                for(int i=j+1; i< files.length; i++){
+                    try{
+                        j_similar[k] = jaccardSimilarity(value.get(j),value.get(i));
+                        a_similar[k] = andbergSimilarity(value.get(j),value.get(i));
+
+                        System.out.println("\n The Jaccard Similarity Between A and B : " + j_similar[k]);
+                        System.out.println("\n The Andberg Similarity Between A and B : " + a_similar[k]);
+
+                    }
+                    catch(Exception e){
+
+                    }
+
+                    k++;
+                }
+
+            }
+
+        j_similarX = jaccardSimilarity(value.get(0),value.get(1));
+        a_similarX = andbergSimilarity(value.get(0),value.get(1));
+
+        System.out.println("LAST Jaccard Similarity Between A and B : " + j_similarX);
+
+        System.out.println("LAST Andberg Similarity Between A and B : " + a_similarX);
+
     }
 
     public static ArrayList<String> getUnidimensionalArray(String fileName){
@@ -68,7 +103,7 @@ public class DataMiningFinal {
 
     }
 
-    public static Double similarity(ArrayList<String> answerOne, ArrayList<String> answerTwo){
+    public static Double jaccardSimilarity(ArrayList<String> answerOne, ArrayList<String> answerTwo){
 
         ArrayList<String> unionAns;
         ArrayList<String> intersectionAns;
@@ -83,8 +118,8 @@ public class DataMiningFinal {
 
             unionAns = uniqueList(unionAns);
 
-        System.out.println("The Intersection A and  B : " + intersectionAns.size());
-        System.out.println("The Union between A U B: " + unionAns.size());
+        //System.out.println("\n The Intersection A and  B : " + intersectionAns.size());
+        //System.out.println("The Union between A U B: " + unionAns.size());
 
 
         similarity = (double)intersectionAns.size()/ (double)unionAns.size();
@@ -92,7 +127,44 @@ public class DataMiningFinal {
         return similarity;
     }
 
-     public static ArrayList<String> uniqueList( ArrayList<String> dataValues){
+    public static Double andbergSimilarity(ArrayList<String> answerOne, ArrayList<String> answerTwo)
+    {
+        ArrayList<String> unionAns;
+        ArrayList<String> intersectionAns;
+        ArrayList<String> symmetricDifference;
+        Double similarity=0.0;
+
+        answerOne = uniqueList(answerOne);
+        answerTwo = uniqueList(answerTwo);
+
+        unionAns=union(answerOne,answerTwo);
+        unionAns=uniqueList(unionAns);
+
+        intersectionAns=intersection(answerOne,answerTwo);
+
+        symmetricDifference=unionAns;
+
+        for(int i=0;i<intersectionAns.size();i++)
+        {
+            for(int j=0;j<unionAns.size();j++)
+            {
+                if(intersectionAns.get(i).equals(unionAns.get(j)))
+                {
+                    symmetricDifference.remove(j);
+                }
+            }
+        }
+
+        similarity=(double)intersectionAns.size()/((double)unionAns.size()+(double)symmetricDifference.size());
+
+        return similarity;
+
+
+
+    }
+
+
+    public static ArrayList<String> uniqueList( ArrayList<String> dataValues){
 
          HashSet hsOne = new HashSet();
 

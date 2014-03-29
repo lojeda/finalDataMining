@@ -1,5 +1,7 @@
 *.class
-
+*.txt
+YahooData1.txt
+YahooData2.txt
 # Package Files #
 *.jar
 *.war
