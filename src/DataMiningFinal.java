@@ -21,9 +21,11 @@ public class DataMiningFinal {
         Double[] j_similar = new Double[6];
         Double[] a_similar = new Double[6];
         Double[] r_similar = new Double[6];
+        Double[] h_similar = new Double[6];
         Double a_similarX;
         Double j_similarX;
         Double r_similarX;
+        Double h_similarX;
 
         int k =0;
 
@@ -42,11 +44,16 @@ public class DataMiningFinal {
                         j_similar[k] = jaccardSimilarity(value.get(j),value.get(i));
                         a_similar[k] = andbergSimilarity(value.get(j),value.get(i));
                         r_similar[k] = rogersSimilarity(value.get(j), value.get(i));
+                        h_similar[k] = hammingSimilarity(value.get(j), value.get(i));
+
+
 
                         System.out.println("\n The Jaccard Similarity Between A and B : " + j_similar[k]);
                         System.out.println("\n The Andberg Similarity Between A and B : " + a_similar[k]);
                         System.out.println("\n The Roger Similarity Between A and B : "+ r_similar[k]);
-                        
+                        System.out.println("\n The Hamming Similarity Between A and B : "+ h_similar[k]);
+
+
 
                     }
                     catch(Exception e){
@@ -61,12 +68,18 @@ public class DataMiningFinal {
         j_similarX = jaccardSimilarity(value.get(0),value.get(1));
         a_similarX = andbergSimilarity(value.get(0),value.get(1));
         r_similarX = rogersSimilarity(value.get(0),value.get(1));
+        h_similarX = hammingSimilarity(value.get(0),value.get(1));
 
         System.out.println("LAST Jaccard Similarity Between A and B : " + j_similarX);
 
         System.out.println("LAST Andberg Similarity Between A and B : " + a_similarX);
 
         System.out.println("LAST Roger Similarity Between A and B : " + r_similarX);
+
+        System.out.println("LAST Roger Similarity Between A and B : " + h_similarX);
+
+
+
 
 
     }

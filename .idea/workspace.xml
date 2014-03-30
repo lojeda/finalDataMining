@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee3204a2-7052-489b-9700-3bbcfe94f4a3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DataMiningFinal.java" afterPath="$PROJECT_DIR$/src/DataMiningFinal.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FileReaderMulti.java" afterPath="$PROJECT_DIR$/src/FileReaderMulti.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FileReaderUni.java" afterPath="$PROJECT_DIR$/src/FileReaderUni.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/keywords-dataset-2.txt" afterPath="$PROJECT_DIR$/data/keywords-dataset-2.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DataMining-Final.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -74,11 +69,11 @@
       <file leaf-file-name="DataMiningFinal.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/DataMiningFinal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="24" selection-start="1638" selection-end="1638" vertical-scroll-proportion="0.59165156" vertical-offset="394" max-vertical-offset="5430">
+            <state line="358" column="22" selection-start="9782" selection-end="9782" vertical-scroll-proportion="0.5372051" vertical-offset="5074" max-vertical-offset="5625">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
-                <element signature="e#6956#6964#0" expanded="true" />
+                <element signature="e#7354#7362#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -518,7 +513,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15221988" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14701803" sideWeight="0.49964765" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14701803" sideWeight="0.49964765" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -561,7 +556,7 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="e#6956#6964#0" expanded="true" />
+            <element signature="e#7354#7362#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -623,7 +618,7 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="e#6956#6964#0" expanded="true" />
+            <element signature="e#7354#7362#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -685,7 +680,7 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="e#6956#6964#0" expanded="true" />
+            <element signature="e#7354#7362#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -874,11 +869,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DataMiningFinal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="24" selection-start="1638" selection-end="1638" vertical-scroll-proportion="0.59165156" vertical-offset="394" max-vertical-offset="5430">
+        <state line="358" column="22" selection-start="9782" selection-end="9782" vertical-scroll-proportion="0.5372051" vertical-offset="5074" max-vertical-offset="5625">
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="e#6956#6964#0" expanded="true" />
+            <element signature="e#7354#7362#0" expanded="true" />
           </folding>
         </state>
       </provider>
