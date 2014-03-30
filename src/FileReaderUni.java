@@ -1,6 +1,10 @@
 import java.io.File;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
 
 /**
  * Created by luis on 3/12/14.
@@ -12,9 +16,17 @@ public class FileReaderUni {
 
         try{
 
-            Scanner fileReader = new Scanner( new File(filename));
+            String name = filename;
+            FileReader f = new FileReader(new File(name));
+            BufferedReader bf = new BufferedReader(f);
+
+           // Scanner fileReader = new Scanner( new File(filename));
+            Scanner fileReader = new Scanner(bf);
 
             while(fileReader.hasNextLine() == true){
+
+
+
 
                 String line =fileReader.nextLine();
                 String[] tokens = line.split(" ");

@@ -16,12 +16,15 @@ public class DataMiningFinal {
 
        // Double similar;
 
-        String [] files = {"/../Webscope_A1/ydata-ysm-advertiser-bids-v1_0.txt","data/keywords-dataset-2.txt"};
+        String [] files = {"data/keywords-dataset-1.txt","data/keywords-dataset-2.txt"};
        // String [] files = {"/../Webscope_A1/ydata-ysm-advertiser-bids-v1_0.txt","data/keywords-dataset-2.txt","data/webpages-dataset-1.txt","data/webpages-dataset-2.txt"};
         Double[] j_similar = new Double[6];
         Double[] a_similar = new Double[6];
+        Double[] r_similar = new Double[6];
         Double a_similarX;
         Double j_similarX;
+        Double r_similarX;
+
         int k =0;
 
 
@@ -38,9 +41,12 @@ public class DataMiningFinal {
                     try{
                         j_similar[k] = jaccardSimilarity(value.get(j),value.get(i));
                         a_similar[k] = andbergSimilarity(value.get(j),value.get(i));
+                        r_similar[k] = rogersSimilarity(value.get(j), value.get(i));
 
                         System.out.println("\n The Jaccard Similarity Between A and B : " + j_similar[k]);
                         System.out.println("\n The Andberg Similarity Between A and B : " + a_similar[k]);
+                        System.out.println("\n The Roger Similarity Between A and B : "+ r_similar[k]);
+                        
 
                     }
                     catch(Exception e){
@@ -54,10 +60,14 @@ public class DataMiningFinal {
 
         j_similarX = jaccardSimilarity(value.get(0),value.get(1));
         a_similarX = andbergSimilarity(value.get(0),value.get(1));
+        r_similarX = rogersSimilarity(value.get(0),value.get(1));
 
         System.out.println("LAST Jaccard Similarity Between A and B : " + j_similarX);
 
         System.out.println("LAST Andberg Similarity Between A and B : " + a_similarX);
+
+        System.out.println("LAST Roger Similarity Between A and B : " + r_similarX);
+
 
     }
 
@@ -118,9 +128,6 @@ public class DataMiningFinal {
 
             unionAns = uniqueList(unionAns);
 
-        //System.out.println("\n The Intersection A and  B : " + intersectionAns.size());
-        //System.out.println("The Union between A U B: " + unionAns.size());
-
 
         similarity = (double)intersectionAns.size()/ (double)unionAns.size();
 
@@ -134,33 +141,78 @@ public class DataMiningFinal {
         ArrayList<String> symmetricDifference;
         Double similarity=0.0;
 
-        answerOne = uniqueList(answerOne);
-        answerTwo = uniqueList(answerTwo);
+            answerOne = uniqueList(answerOne);
+            answerTwo = uniqueList(answerTwo);
 
-        unionAns=union(answerOne,answerTwo);
-        unionAns=uniqueList(unionAns);
+            unionAns=union(answerOne,answerTwo);
+            unionAns=uniqueList(unionAns);
 
-        intersectionAns=intersection(answerOne,answerTwo);
+            intersectionAns=intersection(answerOne,answerTwo);
 
-        symmetricDifference=unionAns;
+            symmetricDifference = symmetricDif(intersectionAns, unionAns);
 
-        for(int i=0;i<intersectionAns.size();i++)
-        {
-            for(int j=0;j<unionAns.size();j++)
-            {
-                if(intersectionAns.get(i).equals(unionAns.get(j)))
-                {
-                    symmetricDifference.remove(j);
-                }
-            }
-        }
-
-        similarity=(double)intersectionAns.size()/((double)unionAns.size()+(double)symmetricDifference.size());
+            similarity=(double)intersectionAns.size()/((double)unionAns.size()+(double)symmetricDifference.size());
 
         return similarity;
 
+    }
+
+    public static Double rogersSimilarity(ArrayList<String> answerOne, ArrayList<String> answerTwo){
+
+        ArrayList<String> unionAns;
+        ArrayList<String> intersectionAns;
+        ArrayList<String> symmetricDifference;
+        ArrayList<String> compUnion;
+        Double similarity=0.0;
+
+            answerOne = uniqueList(answerOne);
+            answerTwo = uniqueList(answerTwo);
+
+            unionAns=union(answerOne,answerTwo);
+            unionAns=uniqueList(unionAns);
+
+            intersectionAns=intersection(answerOne,answerTwo);
+            symmetricDifference = symmetricDif(intersectionAns, unionAns);
+            compUnion = complementUnion(answerOne,answerTwo);
 
 
+            similarity = (double) (intersectionAns.size() + compUnion.size() ) / ((double)intersectionAns.size() + (double)compUnion.size() + 2*((double)symmetricDifference.size())) ;
+
+
+        return similarity;
+    }
+
+    public static Double hammingSimilarity(ArrayList<String> answerOne, ArrayList<String> answerTwo){
+
+        ArrayList<String> unionAns;
+        ArrayList<String> intersectionAns;
+        ArrayList<String> symmetricDifference;
+        ArrayList<String> compUnion;
+        Double similarity=0.0;
+
+            answerOne = uniqueList(answerOne);
+            answerTwo = uniqueList(answerTwo);
+
+            unionAns=union(answerOne,answerTwo);
+            unionAns=uniqueList(unionAns);
+
+            intersectionAns=intersection(answerOne,answerTwo);
+            symmetricDifference = symmetricDif(intersectionAns, unionAns);
+            compUnion = complementUnion(answerOne,answerTwo);
+
+
+        similarity = (double) (intersectionAns.size() + compUnion.size() ) / ((double)intersectionAns.size() + (double)compUnion.size() + ((double)symmetricDifference.size())) ;
+
+
+        return similarity;
+    }
+
+    public static Double sorensenSimilarity(ArrayList<String> answerOne, ArrayList<String> answerTwo){
+
+        Double similarity=0.0;
+
+
+        return similarity;
     }
 
 
@@ -222,5 +274,83 @@ public class DataMiningFinal {
         }
 
         return list;
+    }
+
+
+    public static <T> ArrayList<T> symmetricDif( ArrayList<T> intersectionAns , ArrayList<T> unionAns ){
+
+        ArrayList<T> newDif = new ArrayList<T>();
+
+
+        for(int i=0;i<intersectionAns.size();i++)
+        {
+            for(int j=0;j<unionAns.size();j++)
+            {
+                if(!(intersectionAns.get(i).equals(unionAns.get(j))))
+                {
+                    newDif.add(intersectionAns.get(i));
+                }
+            }
+        }
+
+        HashSet hsOne = new HashSet();
+
+        hsOne.addAll(newDif);
+        newDif.clear();
+        newDif.addAll(hsOne);
+
+
+        return newDif;
+    }
+
+
+    public static <T> ArrayList<T> complementUnion( ArrayList<T> answerOne , ArrayList<T> answerTwo ){
+
+        ArrayList<T> compUnion;
+        ArrayList<T> unionAns;
+        ArrayList<T> difA = new ArrayList<T>();
+        ArrayList<T> difB = new ArrayList<T>();
+
+        unionAns = union(answerOne, answerTwo);
+
+
+        for(int i =0; i<unionAns.size(); i++){
+
+            for(int j=0; j<answerOne.size(); j++){
+
+                if(!(unionAns.get(i).equals(answerOne.get(j)))){
+
+                    difA.add(answerOne.get(j));
+                }
+
+            }
+
+            for(int k=0; k<answerTwo.size(); k++){
+
+               if(!(unionAns.get(i).equals(answerTwo.get(k)))){
+
+                   difB.add(answerTwo.get(k));
+               }
+
+            }
+
+
+        }
+
+        HashSet hsOne = new HashSet();
+
+        hsOne.addAll(difA);
+        difA.clear();
+        difA.addAll(hsOne);
+
+        hsOne.clear();
+
+        hsOne.addAll(difB);
+        difB.clear();
+        difB.addAll(hsOne);
+
+        compUnion = intersection(difA,difB);
+
+        return compUnion;
     }
 }

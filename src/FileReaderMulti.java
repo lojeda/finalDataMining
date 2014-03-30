@@ -5,6 +5,8 @@
 import java.io.File;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 public class FileReaderMulti {
 
@@ -14,7 +16,11 @@ public class FileReaderMulti {
 
         try{
 
-            Scanner fileReader = new Scanner( new File("data/" +filename));
+            String name = "data/" +filename;
+            FileReader f = new FileReader(new File(name));
+            BufferedReader bf = new BufferedReader(f);
+
+            Scanner fileReader = new Scanner(bf);
 
             while(fileReader.hasNextLine() == true){
 
