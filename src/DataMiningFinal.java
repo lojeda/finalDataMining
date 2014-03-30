@@ -22,10 +22,12 @@ public class DataMiningFinal {
         Double[] a_similar = new Double[6];
         Double[] r_similar = new Double[6];
         Double[] h_similar = new Double[6];
+        Double[] s_similar = new Double[6];
         Double a_similarX;
         Double j_similarX;
         Double r_similarX;
         Double h_similarX;
+        Double s_similarX;
 
         int k =0;
 
@@ -41,17 +43,18 @@ public class DataMiningFinal {
 
                 for(int i=j+1; i< files.length; i++){
                     try{
+
                         j_similar[k] = jaccardSimilarity(value.get(j),value.get(i));
                         a_similar[k] = andbergSimilarity(value.get(j),value.get(i));
                         r_similar[k] = rogersSimilarity(value.get(j), value.get(i));
                         h_similar[k] = hammingSimilarity(value.get(j), value.get(i));
-
-
+                        s_similar[k] = sorensenSimilarity(value.get(j), value.get(i));
 
                         System.out.println("\n The Jaccard Similarity Between A and B : " + j_similar[k]);
                         System.out.println("\n The Andberg Similarity Between A and B : " + a_similar[k]);
                         System.out.println("\n The Roger Similarity Between A and B : "+ r_similar[k]);
                         System.out.println("\n The Hamming Similarity Between A and B : "+ h_similar[k]);
+                        System.out.println("\n The Sorensen Similarity Between A and B : " + s_similar[k]);
 
 
 
@@ -69,6 +72,7 @@ public class DataMiningFinal {
         a_similarX = andbergSimilarity(value.get(0),value.get(1));
         r_similarX = rogersSimilarity(value.get(0),value.get(1));
         h_similarX = hammingSimilarity(value.get(0),value.get(1));
+        s_similarX = sorensenSimilarity(value.get(0),value.get(1));
 
         System.out.println("LAST Jaccard Similarity Between A and B : " + j_similarX);
 
@@ -76,7 +80,9 @@ public class DataMiningFinal {
 
         System.out.println("LAST Roger Similarity Between A and B : " + r_similarX);
 
-        System.out.println("LAST Roger Similarity Between A and B : " + h_similarX);
+        System.out.println("LAST Hamming Similarity Between A and B : " + h_similarX);
+
+        System.out.println("Last Sorensen Similarity Between A and B : " + s_similarX);
 
 
 
@@ -222,8 +228,21 @@ public class DataMiningFinal {
 
     public static Double sorensenSimilarity(ArrayList<String> answerOne, ArrayList<String> answerTwo){
 
+        ArrayList<String> unionAns;
+        ArrayList<String> intersectionAns;
+        ArrayList<String> symmetricDifference;
         Double similarity=0.0;
 
+            answerOne = uniqueList(answerOne);
+            answerTwo = uniqueList(answerTwo);
+
+            unionAns=union(answerOne,answerTwo);
+            unionAns=uniqueList(unionAns);
+
+            intersectionAns=intersection(answerOne,answerTwo);
+            symmetricDifference = symmetricDif(intersectionAns, unionAns);
+
+            similarity = (double)(2* intersectionAns.size()) / ((double)(2* intersectionAns.size()) + (double)symmetricDifference.size());
 
         return similarity;
     }
@@ -301,7 +320,7 @@ public class DataMiningFinal {
             {
                 if(!(intersectionAns.get(i).equals(unionAns.get(j))))
                 {
-                    newDif.add(intersectionAns.get(i));
+                    newDif.add(unionAns.get(j));
                 }
             }
         }
